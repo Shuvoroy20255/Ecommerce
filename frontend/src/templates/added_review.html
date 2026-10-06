@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .review-display { border: 2px solid #4CAF50; padding: 20px; width: 50%; margin: 20px auto; text-align: center; border-radius: 10px; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="review-display">
+        <h2>Review Posted Successfully!</h2>
+        <p><strong>Review:</strong> {{ review_text }}</p>
+        
+        <div>
+            <p>Sentiment:</p>
+            <img src="{{ sentiment_image_url }}" alt="Sentiment Icon" width="60">
+        </div>
+    </div>
+</body>
+</html>

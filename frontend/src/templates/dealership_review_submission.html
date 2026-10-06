@@ -1,0 +1,30 @@
+<form method="POST" action="/post_review/{{ dealer_id }}/">
+    {% csrf_token %}
+    
+    <div style="margin-bottom: 15px;">
+        <label>Review:</label><br>
+        <textarea name="review" rows="4" cols="50" required placeholder="Write your review here..."></textarea>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label>Car Make:</label><br>
+        <select name="car_make" required>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="Ford">Ford</option>
+            <option value="BMW">BMW</option>
+        </select>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label>Car Year:</label><br>
+        <input type="number" name="car_year" min="2000" max="2026" required>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label>Purchase Date:</label><br>
+        <input type="date" name="purchase_date" required>
+    </div>
+    
+    <button type="submit">Post Review</button>
+</form>

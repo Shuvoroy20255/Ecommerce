@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Portal</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .login-box { border: 1px solid #ddd; padding: 20px; width: 300px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        {% if user.is_authenticated %}
+            <p>Welcome, <strong>{{ user.username }}</strong> | <a href="/logout">Logout</a></p>
+        {% else %}
+            <div class="login-box">
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <h3>Admin Login</h3>
+                    <input type="text" name="username" placeholder="Username" required><br><br>
+                    <input type="password" name="password" placeholder="Password" required><br><br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        {% endif %}
+    </header>
+
+    <h2>Dealer List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Dealer Name</th>
+                <th>ID</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>ZIP</th>
+                <th>State</th>
+                {% if user.is_authenticated %}
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for dealer in dealers %}
+            <tr>
+                <td>{{ dealer.full_name }}</td>
+                <td>{{ dealer.id }}</td>
+                <td>{{ dealer.city }}</td>
+                <td>{{ dealer.address }}</td>
+                <td>{{ dealer.zip }}</td>
+                <td>{{ dealer.st }}</td>
+                {% if user.is_authenticated %}
+                <td><a href="/review/{{ dealer.id }}">Review Dealer</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

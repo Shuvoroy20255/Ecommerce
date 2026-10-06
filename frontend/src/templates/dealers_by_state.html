@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dealers in {{ state }}</title>
+</head>
+<body>
+    <h2>Dealers in {{ state }}</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Dealer Name</th>
+                <th>ID</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>ZIP</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dealer in dealers %}
+            <tr>
+                <td>{{ dealer.full_name }}</td>
+                <td>{{ dealer.id }}</td>
+                <td>{{ dealer.city }}</td>
+                <td>{{ dealer.address }}</td>
+                <td>{{ dealer.zip }}</td>
+                <td>{{ dealer.st }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
